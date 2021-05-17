@@ -4,5 +4,9 @@
 __pycache__
 __pycache__
 .myenv
-
 *.gitignore
+.gitignore
+app/todoDb.db
+app/myDB.db
+/*.gitignore
+todoDB.db
