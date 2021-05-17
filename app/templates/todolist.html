@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="todo-container">
+        <div class="todo-header">
+            <a href="/" class="home">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="2em" height="2em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                    <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm5 11h-5v4l-5-5l5-5v4h5v2z"/></svg></a>
+            <h3 class="todo-name">{{todo.name}}</h3>
+            <div class="_header-dunder"></div>
+        </div>
+        <ol class="todo-items">
+            {%for item in todo.tasks %}
+                   <li class="item" id="{{ item.id }}">
+                       <div class="_item-dunder"></div>
+                       <span class="task">{{item.task}}</span>
+                        <div class="complete">
+                       {% if item.isCompleted == True %}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" id="check-icon{{item.id}}" 
+                        width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+                        {%endif%} 
+                        </div>
+                    </li> 
+            {%endfor%}
+            <div class="item-input">   
+                <form method="post">
+                    {{ form.task(class_='todo-input', placeholder="Enter new task", value="", maxlength=128) }}
+                    {{ form.submit}}
+                    </form>
+            </div>
+            <input type="submit" id="clear" value="clear complete">
+            <div class="delete">
+               
+                <form method="post" action="{{url_for('main.delete_todo', todoid=todo.id)}}">
+                    <input type="submit" class="delete-button" value="delete list">
+                </form>
+            </div>
+        </ol>  
+    </div>
+
+ 
+</div>
+<script>
+
+
+let todoId = {{ todo.id }};
+todoId = todoId.toString();
+items = document.getElementsByClassName("item")
+clearBtn = document.getElementById("clear")
+
+for(let item of items){
+    item.addEventListener("mouseover", function(){
+        let svg_class = "check-icon" + item.id
+        svgItem = document.getElementById(svg_class)
+        if (svgItem){
+            svgItem.classList.add("hover-check")
+        }
+
+    })
+    item.addEventListener("mouseout", function(){
+        let svg_class = "check-icon" + item.id
+        svgItem = document.getElementById(svg_class)
+        if(svgItem){
+            svgItem.classList.remove("hover-check")
+            svgItem.classList.add("default-check")
+        }
+  
+    })
+
+    item.addEventListener("click", function(){
+        const Http = new XMLHttpRequest();
+        Http.onreadystatechange = function(){
+            if(Http.readyState === 4){
+                document.location.reload(true)
+            }
+        }
+        const url = todoId + '/items/' + this.id + '/toggle'
+        Http.open("PATCH", url)
+        Http.send()
+    })
+}
+
+clearBtn.addEventListener("click", function(){
+    console.log("click")
+    const Http = new XMLHttpRequest();
+    Http.onreadystatechange = function(){
+        if(Http.readyState === 4){
+            document.location.reload(true)
+        }
+    }      
+    const url = todoId + '/clearComplete'
+    Http.open("POST", url)
+    Http.send()
+})
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="add-list-form">
+  <form class="add-todo" method="post">
+    {{ form.name(class_='todolist-input', placeholder="Enter new list", value="", maxlength=128) }}
+    {{ form.submit  }}
+  </form>
+</div>
+
+<div class="container">
+
+  <div class="todos-container">
+  {%for todo in todos%}
+  <a class='card-class'href="/todolist/{{ todo.id }}">  
+    <div class="card">
+ 
+        <p class="count">{{ todo.tasks|length }}</p >
+        <div class="card-text">
+          <p>{{ todo.name }}</p>
+        </div>
+        <div class="card-stats">
+          <div class="dunder"></div>
+          <p class="list-button">Get Started</p>
+        </div>
+
+  </div>
+  </a>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}

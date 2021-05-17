@@ -1,0 +1,326 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100vw;
+  padding: 2rem;
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  background: #1a1d28;
+}
+.add-list-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  margin-bottom: -3em;
+}
+.add-todo {
+  text-align: center;
+  min-width: 50%;
+}
+
+.add-todo input[type="text"] {
+  color: white;
+  font-size: 1.4rem;
+}
+
+.add-todo input[type="text"]:focus {
+  border-bottom: 1px solid white;
+}
+
+.add-todo input[type="submit"] {
+  padding: none;
+  border: none;
+}
+
+.todolist-input {
+  width: 30%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  cursor: default;
+}
+
+.card-class {
+  display: flex;
+  align-content: center;
+}
+.container {
+  min-width: 60vw;
+  padding-top: 6rem;
+}
+.todos-container {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-row-gap: 5rem;
+  min-width: 30rem;
+}
+.card {
+  height: 25rem;
+  max-width: 19rem;
+  font-family: roboto;
+  font-size: 1rem;
+  border-radius: 1.5rem;
+  background: #eceaea;
+  box-shadow: 0.2rem 0.2rem 1.1rem rgba(0, 0, 0, 0.9);
+  text-align: center;
+  padding-top: 5rem;
+  justify-content: space-between;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (min-width: 720px) {
+  .todos-container {
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    grid-column-gap: 5rem;
+  }
+
+  input[type="text"] {
+    outline: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .todos-container {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw;
+    grid-column-gap: 5rem;
+  }
+}
+
+.count {
+  font-size: 8rem;
+  margin-bottom: 0.2rem;
+  color: #4b4c4d;
+  font-family: "Dosis", sans-serif;
+}
+
+.card-text {
+  width: 20rem;
+  justify-content: center;
+  text-align: center;
+}
+.todo-name,
+.card-text p {
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  font-size: 1.3rem;
+  color: #282a30;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.list-button {
+  text-transform: capitalize;
+  margin-top: 1rem;
+  font-family: "Nunito Sans", sans-serif;
+  cursor: pointer;
+  line-height: 1em;
+  cursor: pointer;
+  font-size: 1.3em;
+}
+
+.todo-header {
+  max-width: 30rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
+}
+
+.home {
+  width: 2rem;
+  fill: white;
+}
+
+.todo-name {
+  width: 26rem;
+  color: #eceaea;
+  text-align: center;
+}
+
+._header-dunder {
+  width: 2rem;
+}
+.todo-items {
+  border-radius: 1.5em;
+  margin-top: 1em;
+  background: #eceaea;
+  color: #1a1d28;
+  min-width: 24rem;
+  font-size: 1.3em;
+  text-align: center;
+  flex-direction: column;
+  padding-bottom: 3rem;
+  transition: 1s;
+  /* transform: translateY(2s); */
+}
+
+input {
+  width: 50vw;
+  height: 3rem;
+  text-align: center;
+}
+
+.item {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1em;
+  padding-right: 1em;
+  padding-left: 1em;
+  height: 3em;
+  line-height: 3em;
+  display: flex;
+  justify-content: center;
+  transition: 0.4s;
+}
+
+.item:last-child {
+  margin-bottom: 1em;
+}
+
+.item:hover {
+  transform: scale(1.1);
+  background-color: #1a1d28;
+  color: white;
+  font-weight: bold;
+}
+
+.check-icon {
+  height: 0.8em;
+  fill: #1a1d28;
+}
+
+.default-check {
+  fill: #1a1d28;
+}
+
+.hover-check {
+  fill: white;
+}
+
+.fa-plus {
+  color: white;
+}
+._item-dunder {
+  width: 10%;
+}
+
+.task {
+  width: 80%;
+}
+
+.complete {
+  width: 10%;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  width: 25rem;
+  font-family: "Roboto", sans-serif;
+  justify-content: center;
+  transition: 1.5s;
+}
+
+input[type="text"] {
+  font-size: 1em;
+  padding: 1.5em;
+  padding-bottom: 0px;
+  width: 75%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #adb4bb;
+  padding: 0px;
+}
+
+input[type="text"]:focus {
+  border: transparent;
+  border-bottom: 1px solid #1a1d28;
+  background: transparent;
+  outline: none;
+}
+input[type="submit"] {
+  line-height: 1em;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 40%;
+  background: #1a1d28;
+  color: white;
+  font-size: 1em;
+  border-radius: 1.5em;
+  transition: 0.5s;
+}
+input[type="submit"]:hover {
+  transform: scale(1.1);
+}
+
+.hover-white {
+  color: white;
+}
+
+.delete {
+  display: flex;
+  justify-content: center;
+  height: 2em;
+  font-size: 1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.delete input[type="submit"],
+.clear {
+  background: none;
+  outline: none;
+  border: none;
+  color: #1a1d28;
+}
+
+.delete input[type="submit"]:hover {
+  color: rgb(202, 101, 101);
+}
+
+.delete span {
+  background: yellowgreen;
+  border-radius: 45em;
+  padding: 0.7em;
+}
+
+.delete span:hover {
+  color: red;
+
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.home {
+  cursor: pointer;
+}
+
+.home:hover {
+  transition: 0.5s;
+  transform: scale(1.1);
+}
